@@ -109,6 +109,8 @@
         <ul>
             <li class="active"><a href="SearchMovies.php">search form</a></li>
             <li><a href="Top10.php">top 10 movies</a></li>
+			<li><a href="SignUp.php">sign up</a></li>
+			<li><a href="./admin/UnsubscribeUsers.php">admin</a></li>>
         </ul>
     </nav>
 
