@@ -87,9 +87,19 @@
 		  padding: 10px 10px 10px 0px;
 		  display: inline-block;
 		}
-		/* Style the submit button */
-		input[type=submit] {
+		/* Style the submit buttons */
+		input[class=subscribe] {
 		  background-color: darkblue;
+		  color: white;
+		  padding: 12px 20px;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  float: left;
+		  margin-top: 12px;
+		}
+		input[class=unsubscribe] {
+		  background-color: darkred;
 		  color: white;
 		  padding: 12px 20px;
 		  border: none;
@@ -143,9 +153,7 @@
 		</nav>
 	<section class="userSignUp">
 		<form action="add_new_user_scr.php" method="post">
-			<!-- table for input and show all users -->
 			<h1> Member Sign Up</h1>
-			<!--<table id='tbluserdetails'>-->
 			<div class="row">
 				<div class="col-75">
 					<h2> Subscribe to our newsletter to recieve updates or
@@ -195,10 +203,50 @@
 					<span class="error"><br>* Please select at least one</span>
 				</div>
 			</div>
-			<!-- Buttons for submit and reset form -->
+			<!-- Button for submit form -->
 			<div class="row">
 				<div class="col-25">
-					<input type="submit" name="subscribe" value="Subscribe">
+					<input class="subscribe" type="submit" name="subscribe" value="Subscribe">
+				</div>
+			</div>
+		</form>
+	</section>
+	<section class="userSignUp">
+		<form action="user_unsubscribe_request_scr.php" method="post">
+			<h1> Unsubscribe</h1>
+			<div class="row">
+				<div class="col-75">
+					<h2> To unsubscibe please enter your email address:</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label for="userEmailUnsub">Email:</label>
+				</div>
+				<div class="col-75">
+					<input type="email" name="userEmailUnsub">
+					<span class="error">*</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label>
+						<input type="checkbox" name="newsletterUnsub" value="1">Monthly Newsletter
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-25">
+					<label>
+						<input type="checkbox" name="newsflashUnsub" value="1">Newsflash Notifications
+					</label>
+					<span class="message"><br>Please select what you would like to unsubscribe from.</span>
+				</div>
+			</div>
+			<!-- Button for submit form -->
+			<div class="row">
+				<div class="col-25">
+					<input class="unsubscribe" type="submit" name="unsubscribe" value="Unsubscribe">
 				</div>
 			</div>
 		</form>
