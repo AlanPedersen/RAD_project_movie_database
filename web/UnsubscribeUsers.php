@@ -107,8 +107,9 @@
 
     <nav>
         <ul>
-            <li><a href="SearchMovies.php">search form</a></li>
-            <li><a href="Top10.php">top 10 movies</a></li>
+            <li><a href="../SearchMovies.php">search form</a></li>
+            <li><a href="../Top10.php">top 10 movies</a></li>
+			<li><a href="../SignUp.php">sign up</a></li>
             <li class="active"><a href="UnsubscribeUsers.php">unsubscribe</a></li>
         </ul>
     </nav>
