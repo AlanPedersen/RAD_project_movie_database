@@ -42,7 +42,8 @@
             text-decoration: none;
         }
 
-        nav a:hover {
+        nav a:hover,
+        .titleLink:hover {
             color: red;
         }
         
@@ -96,7 +97,99 @@
                 grid-template-columns: 275px 155px 155px 155px;
             }
         }
+
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 30px;
+            color: #ccc;
+        }
+
+        .rate:not(:checked)>label:before {
+            content: '★ ';
+        }
+
+        .rate>input:checked~label {
+            color: #ffc700;
+        }
+
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #deb217;
+        }
+
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #c59b08;
+        }
+
+        .form-popup {
+            max-width: 200px;
+            display: none;
+            position: relative;
+            border: 3px solid #f1f1f1;
+        }
+
+        /* Add styles to the form container */
+        .form-container {
+            max-width: 220px;
+            padding: 5px;
+            background-color: white;
+        }
+
+        .form-container .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 5px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover,
+        .open-button:hover {
+            opacity: 1;
+        }
+
     </style>
+
+    <script>
+        function openForm(movieRow) {
+            movieTitle = document.getElementById("movieTable").rows[movieRow].cells[0].innerHTML;
+            document.getElementById("rateTitle").value = movieTitle;
+
+            document.getElementById("ratingForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("ratingForm").style.display = "none";
+        }
+    </script>
 
 </head>
 
@@ -211,6 +304,34 @@
 
         </form>
 
+    </section>
+
+    <section>
+        <div class="form-popup" id="ratingForm">
+            <form class="form-container" name="ratingForm"  
+                action="SearchMovies.php" method="post">
+                <div>
+                    <input type="text" id="rateTitle" name="rateTitle"
+                        title="movie to rate">
+                </div>
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="5 stars">5 stars</label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="4 stars">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="3 stars">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="2 stars">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="1 star">1 star</label>
+                </div>
+                <div>
+                    <button type="submit" name="setRating" class="btn">Rate Movie</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </div>
+            </form>
+        </div>
     </section>
 
     <section>

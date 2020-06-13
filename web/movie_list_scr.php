@@ -11,6 +11,18 @@
 
 // check if the form has been posted
 if (isset($_POST['search'])) {
+    postSearch();
+
+}
+
+// check if the rating form has been posted
+if (isset($_POST['setRating'])) {
+    postRating();
+    
+}
+
+function postSearch()
+{
     try {
         // connect to the database
         include "connect.pdo.php";
@@ -143,6 +155,8 @@ if (isset($_POST['search'])) {
 
         // test for returned records
         if ($numRecs > 0) {
+            // initialise the counter
+            $rowNum = 1;
             // output the table header
             echo '<table class="table table-striped" id="movieTable">';
             echo "<tr><th>Title</th><th>Studio</th><th>Price</th>";
@@ -150,13 +164,15 @@ if (isset($_POST['search'])) {
             // output data of each row
             while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>" . 
-                "<td>" . $row['Title'] . "</td>" .
+                "<td onclick = openForm(" . $rowNum . ") class='titleLink'>"
+                    . $row['Title'] . "</td>" .
                 "<td>" . $row['StudioName'] . "</td>" .
                 "<td>" . $row['RecRetPrice'] . "</td>" .
                 "<td>" . $row['RatingCode'] . "</td>" .
                 "<td>" . $row['Year'] . "</td>" .
                 "<td>" . $row['GenreCode'] . "</td>" .
                 "</tr>";
+                $rowNum++;
             }
             // finish the table
             echo "</table>";
@@ -200,6 +216,68 @@ if (isset($_POST['search'])) {
     {
         echo "Database error: " . $e->getMessage();
     }
+}
+
+function postRating() 
+{
+    try {
+        // connect to the database
+        include "connect.pdo.php";
+
+        // testing flag
+        $testingFlag = false;
+
+        // construct the select conditions
+        // initialise the strings
+        $filter = "";
+        $searchTitle = "";
+        
+        if( $testingFlag) {
+            echo "post: " . print_r($_POST);
+            echo "title: " . $_POST['rateTitle'];
+            echo "rating: " . $_POST['rate'];
+        }
+
+            // test that the two required values are set
+        if( isset($_POST['rateTitle']) && isset($_POST['rate'])) {
+            // clean the movie title string
+            // $searchTitle = cleanInput($_POST["rateTitle"]);
+            $searchTitle = $_POST["rateTitle"];
+
+            // make the search string
+            $filter = 'WHERE Title = "' . $searchTitle . '"';
+
+            // echo the filter
+            if ($testingFlag) { 
+                echo "filter title: " . $filter . "<br>";
+            }
+
+            // create the sql commands 
+            $sqlCommand = "UPDATE vwTitleRating SET " . 
+                $_POST['rate'] . "starCount = " . $_POST['rate'] . 
+                "starCount + 1 ". $filter;
+
+            // echo the command
+            if ($testingFlag) { 
+                echo "sql: " . $sqlCommand . "<br>";
+            }
+
+            // prepare the SQL command to list movies
+            $sql = $conn->prepare($sqlCommand);
+
+            // run the SQL command
+            $sql->execute();
+        }
+
+        // close the connection
+        $conn = null;
+
+    }
+    catch(PDOException $e)
+    {
+        echo "Database error: " . $e->getMessage();
+    }
+
 }
 
 // clean up input data
