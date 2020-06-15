@@ -191,7 +191,8 @@
         if(typeof(EventSource) !== "undefined") {
             var source = new EventSource("updateChart.php");
             source.onmessage = function(event) {
-                drawChart();
+                // drawChart();
+                location.reload();
                 // document.getElementById("sse_message").innerHTML += event.data + "<br>";
             };
         } else {

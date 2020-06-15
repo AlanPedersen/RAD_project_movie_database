@@ -180,7 +180,7 @@
 
     <script>
         function openForm(movieRow) {
-            movieTitle = document.getElementById("movieTable").rows[movieRow].cells[0].innerHTML;
+            movieTitle = document.getElementById("movieTable").rows[movieRow].cells[0].innerText;
             document.getElementById("rateTitle").value = movieTitle;
 
             document.getElementById("ratingForm").style.display = "block";
