@@ -1,0 +1,32 @@
+/*
+    RAD project
+    Group B    
+    base css style sheet for all pages
+
+*/
+
+* {
+    margin: 10;
+    padding: 10;
+
+}
+
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: black;
+    text-align: left;
+}
+
+h2 {
+    text-align: left;
+    font-size: 16px;
+}
+
+p {
+    font-family: verdana;
+    font-size: 12px;
+
+}

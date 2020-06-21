@@ -1,0 +1,43 @@
+/*
+    RAD project
+    Group B    
+    css style sheet for the nav menu
+
+*/
+
+nav {
+    margin-top: 10px;
+    background-color: #dddddd;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    align-items: left;
+    justify-content: center;    
+}
+
+nav a {
+    color: black;
+    font-weight: bold;
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+}
+
+nav a:hover,
+.titleLink:hover {
+    color: red;
+}
+
+ul {
+    font-family: verdana;
+    font-size: 16px;
+    list-style-type: none;
+    margin: 10;
+    padding: 20;
+    background-color: #dddddd;
+    width: 400px;
+
+}
+

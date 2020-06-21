@@ -14,65 +14,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- import compiled and minified CSS -->
     <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- import the base style sheet -->
+    <link rel="stylesheet" href="base.css">
+    <!-- import the nav bar style sheet -->
+    <link rel="stylesheet" href="menu_nav.css">
 	
 	<style type="text/css">    
-        * {
-            margin: 10;
-            padding: 10;
-
-        }
-        
-        nav {
-            margin-top: 10px;
-        }
-    
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: left;
-            justify-content: center;    
-        }
-    
-        nav a {
-            color: black;
-            font-weight: bold;
-            display: block;
-            padding: 15px;
-            text-decoration: none;
+        .navMenuSignUp {
+            background-color: darkgrey;
         }
 
-        nav a:hover {
-        	color: red;
-        }
-
-        body {
-            background-color: lightblue;
-        }
-        
-        h1 {
-            color: black;
-            text-align: left;
-        }
-        
-        h2 {
-            text-align: left;
-            font-size: 16px;
-        }
-        
-        p {
-            font-family: verdana;
-            font-size: 12px;
-        }
-
-        ul {
-            font-family: verdana;
-            font-size: 16px;
-            list-style-type: none;
-            margin: 10;
-            padding: 20;
-            background-color: #dddddd;
-            width: 400px;
-        }
 		/* Style inputs, select elements and textareas */
 		input[type=text],input[type=email], select, textarea{
 		  width: 50%;
@@ -82,11 +34,13 @@
 		  box-sizing: border-box;
 		  resize: vertical;
 		}
+
 		/* Style the label to display next to the inputs */
 		label {
 		  padding: 10px 10px 10px 0px;
 		  display: inline-block;
 		}
+
 		/* Style the submit buttons */
 		input[class=subscribe] {
 		  background-color: darkblue;
@@ -98,6 +52,7 @@
 		  float: left;
 		  margin-top: 12px;
 		}
+
 		input[class=unsubscribe] {
 		  background-color: darkred;
 		  color: white;
@@ -108,24 +63,28 @@
 		  float: left;
 		  margin-top: 12px;
 		}
+
 		/* Style the container */
 		.userSignUp {
 		  border-radius: 5px;
 		  background-color: #lightblue;
 		  padding: 20px;
 		}
+
 		/* Floating column for labels: 25% width */
 		.col-25 {
 		  float: left;
 		  width: 25%;
 		  margin-top: 0px;
 		}
+
 		/* Floating column for inputs: 75% width */
 		.col-75 {
 		  float: left;
 		  width: 75%;
 		  margin-top: 6px;
 		}
+
 		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack */
 		@media screen and (max-width: 600px) {
 		  .col-25, .col-75, input[type=submit] {
@@ -133,10 +92,12 @@
 			margin-top: 0;
 		  }
 		}
-		  /* error style */
-		  .error {
+
+		/* error style */
+		.error {
 		  color: red;
-		  }
+		}
+
 		</style>
 	</head>
 
@@ -144,14 +105,11 @@
 		<header>
 			<H1>Acme Entertainment</H1>
 		</header>
+
 		<nav>
-			<ul>
-				<li><a href="SearchMovies.php">search form</a></li>
-				<li><a href="Top10.php">top 10 movies</a></li>
-				<li class="active"><a href="SignUp.php">sign up</a></li>
-				<li><a href="./admin/UnsubscribeUsers.php">admin</a></li>
-			</ul>
-		</nav>
+    	    <?php require 'menu_nav_scr.php'; ?>
+	    </nav>
+
 	<section class="userSignUp">
 		<form action="add_new_user_scr.php" method="post">
 			<h1> Member Sign Up</h1>

@@ -13,75 +13,39 @@
     <meta charset="UTF-8">
     <title>Movie Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- import compiled and minified CSS -->
-    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <!-- import the base style sheet -->
+    <link rel="stylesheet" href="base.css">
+    <!-- import the nav bar style sheet -->
+    <link rel="stylesheet" href="menu_nav.css">
+    <!-- import the ratings form style sheet -->
+    <link rel="stylesheet" href="ratings_formatting.css">
 
     <style type="text/css">    
-        * {
-            margin: 10;
-            padding: 10;
-
-        }
-        
-        nav {
-            margin-top: 10px;
-        }
-    
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: left;
-            justify-content: center;    
-        }
-    
-        nav a {
-            color: black;
-            font-weight: bold;
-            display: block;
-            padding: 15px;
-            text-decoration: none;
-        }
-
-        nav a:hover,
-        .titleLink:hover {
-            color: red;
-        }
-        
-        body {
-            background-color: lightblue;
-        }
-        
-        h1 {
-            color: black;
-            text-align: left;
-        }
-        
-        h2 {
-            text-align: left;
-            font-size: 16px;
-        }
-        
-        p {
-            font-family: verdana;
-            font-size: 12px;
-
-        }
-
-        ul {
-            font-family: verdana;
-            font-size: 16px;
-            list-style-type: none;
-            margin: 10;
-            padding: 20;
-            background-color: #dddddd;
-            width: 400px;
-
+        .navMenuSearch {
+            background-color: darkgrey;
         }
 
         .searchBlock, 
         .searchButton {
             padding: 5px;
             margin: 5px;
+        }
+
+        td, th {
+            padding-right: 10px;
+            padding-left: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            text-align: left;
+        }
+
+        tr:nth-child(2n) {
+            background: white;
+        }
+
+        .form-popup {
+            display: none;
         }
 
         @media (min-width: 600px) and (max-width: 799px) {
@@ -98,84 +62,6 @@
             }
         }
 
-        .rate {
-            float: left;
-            height: 46px;
-            padding: 0 10px;
-        }
-
-        .rate:not(:checked)>input {
-            position: absolute;
-            top: -9999px;
-        }
-
-        .rate:not(:checked)>label {
-            float: right;
-            width: 1em;
-            overflow: hidden;
-            white-space: nowrap;
-            cursor: pointer;
-            font-size: 30px;
-            color: #ccc;
-        }
-
-        .rate:not(:checked)>label:before {
-            content: '★ ';
-        }
-
-        .rate>input:checked~label {
-            color: #ffc700;
-        }
-
-        .rate:not(:checked)>label:hover,
-        .rate:not(:checked)>label:hover~label {
-            color: #deb217;
-        }
-
-        .rate>input:checked+label:hover,
-        .rate>input:checked+label:hover~label,
-        .rate>input:checked~label:hover,
-        .rate>input:checked~label:hover~label,
-        .rate>label:hover~input:checked~label {
-            color: #c59b08;
-        }
-
-        .form-popup {
-            max-width: 200px;
-            display: none;
-            position: relative;
-            border: 3px solid #f1f1f1;
-        }
-
-        /* Add styles to the form container */
-        .form-container {
-            max-width: 220px;
-            padding: 5px;
-            background-color: white;
-        }
-
-        .form-container .btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 16px 20px;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            margin-bottom: 5px;
-            opacity: 0.8;
-        }
-
-        /* Add a red background color to the cancel button */
-        .form-container .cancel {
-            background-color: red;
-        }
-
-        /* Add some hover effects to buttons */
-        .form-container .btn:hover,
-        .open-button:hover {
-            opacity: 1;
-        }
-
     </style>
 
     <script>
@@ -183,7 +69,11 @@
             movieTitle = document.getElementById("movieTable").rows[movieRow].cells[0].innerText;
             document.getElementById("rateTitle").value = movieTitle;
 
+            // this version to open the pop up form
             document.getElementById("ratingForm").style.display = "block";
+            // this version to open the movie details page
+            // window.open("MovieDetails.php?selectedTitle=" + movieTitle);
+
         }
 
         function closeForm() {
@@ -199,12 +89,7 @@
     </header>
 
     <nav>
-        <ul>
-            <li class="active"><a href="SearchMovies.php">search form</a></li>
-            <li><a href="Top10.php">top 10 movies</a></li>
-			<li><a href="SignUp.php">sign up</a></li>
-			<li><a href="./admin/UnsubscribeUsers.php">admin</a></li>>
-        </ul>
+        <?php require 'menu_nav_scr.php'; ?>
     </nav>
 
     <section>
@@ -338,7 +223,6 @@
         <H1>Movie List</H1>
         <?php require 'movie_list_scr.php'; ?>
     </section>
-
 </body>
 
 </html>

@@ -14,67 +14,16 @@
     <title>Movie Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- import compiled and minified CSS -->
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- link rel="stylesheet" href="bootstrap.min.css" -->
+
+    <!-- import the base style sheet -->
+    <link rel="stylesheet" href="../base.css">
+    <!-- import the nav bar style sheet -->
+    <link rel="stylesheet" href="../menu_nav.css">
 
     <style type="text/css">    
-        * {
-            margin: 10;
-            padding: 10;
-
-        }
-        
-        nav {
-            margin-top: 10px;
-        }
-    
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: left;
-            justify-content: center;    
-        }
-    
-        nav a {
-            color: black;
-            font-weight: bold;
-            display: block;
-            padding: 15px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: red;
-        }
-        
-        body {
-            background-color: lightblue;
-        }
-        
-        h1 {
-            color: black;
-            text-align: left;
-        }
-        
-        h2 {
-            text-align: left;
-            font-size: 16px;
-        }
-        
-        p {
-            font-family: verdana;
-            font-size: 12px;
-
-        }
-
-        ul {
-            font-family: verdana;
-            font-size: 16px;
-            list-style-type: none;
-            margin: 10;
-            padding: 20;
-            background-color: #dddddd;
-            width: 400px;
-
+        .navMenuAdmin {
+            background-color: darkgrey;
         }
 
         .searchBlock, 
@@ -106,12 +55,7 @@
     </header>
 
     <nav>
-        <ul>
-            <li><a href="../SearchMovies.php">search form</a></li>
-            <li><a href="../Top10.php">top 10 movies</a></li>
-			<li><a href="../SignUp.php">sign up</a></li>
-            <li class="active"><a href="UnsubscribeUsers.php">unsubscribe</a></li>
-        </ul>
+        <?php require 'menu_nav_scr.php'; ?>
     </nav>
 
     <section>
