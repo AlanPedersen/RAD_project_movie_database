@@ -14,6 +14,9 @@
     <title>Movie Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- import compiled and minified CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+
     <!-- import the base style sheet -->
     <link rel="stylesheet" href="base.css">
     <!-- import the nav bar style sheet -->
@@ -42,6 +45,9 @@
             display: block;
         }
 
+        th {
+            text-align: right;
+        }
     </style>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -102,7 +108,10 @@
 
     <section class="ratingChart">
             <h1>Viewer Ratings: <?php echo $_GET['selectedTitle'] ?></h1>
-            <div id="chart_sml_rating" class="chartSmall"></div>
+            <div id="chart_sml_rating" class="chartSmall" 
+                aria-label="chart of user ratings">
+                <img alt="chart of user ratings"/>
+            </div>
     </section>
 
     <section>

@@ -13,13 +13,13 @@
     <meta charset="UTF-8">
     <title>Movie Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- import compiled and minified CSS -->
-    <!-- link rel="stylesheet" href="bootstrap.min.css" -->
 
-    <!-- import the base style sheet -->
-    <link rel="stylesheet" href="../base.css">
     <!-- import the nav bar style sheet -->
     <link rel="stylesheet" href="../menu_nav.css">
+    <!-- import compiled and minified CSS -->
+    <link rel="stylesheet" href="../bootstrap.min.css">
+    <!-- import the base style sheet -->
+    <link rel="stylesheet" href="../base.css">
 
     <style type="text/css">    
         .navMenuAdmin {

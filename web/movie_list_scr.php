@@ -159,8 +159,11 @@ function postSearch()
             $rowNum = 1;
             // output the table header
             echo '<table class="table table-striped" id="movieTable">';
-            echo "<tr><th>Title</th><th>Studio</th><th>Price</th>";
-            echo "<th>Rating</th><th>Year</th><th>Genre</th></tr>";
+            echo "<tr>";
+            echo "<th scope='col'>Title</th><th scope='col'>Studio</th>";
+            echo "<th scope='col'>Price</th><th scope='col'>Rating</th>";
+            echo "<th scope='col'>Year</th><th scope='col'>Genre</th>";
+            echo "</tr>";
             // output data of each row
             while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                 echo "<tr>" . 

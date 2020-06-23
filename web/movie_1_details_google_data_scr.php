@@ -40,12 +40,12 @@ if(isset($_GET['selectedTitle']))
 
         // create the data table for display
         echo "<table>";
-        echo "<tr><td><B>Title: </B></td><td>" . $movieTitle . "</td></tr>";
-        echo "<tr><td><B>Studio: </B></td><td>" . $studio . "</td></tr>";
-        echo "<tr><td><B>RRP: </B></td><td>" . $price . "</td></tr>";
-        echo "<tr><td><B>Rating: </B></td><td>" . $rating . "</td></tr>";
-        echo "<tr><td><B>Year: </B></td><td>" . $year . "</td></tr>";
-        echo "<tr><td><B>Genre: </B></td><td>" . $genre . "</td></tr>";
+        echo "<tr><th>Title:</th><td>" . $movieTitle . "</td></tr>";
+        echo "<tr><th>Studio:</th><td>" . $studio . "</td></tr>";
+        echo "<tr><th>RRP:</th><td>" . $price . "</td></tr>";
+        echo "<tr><th>Rating:</th><td>" . $rating . "</td></tr>";
+        echo "<tr><th>Year:</th><td>" . $year . "</td></tr>";
+        echo "<tr><th>Genre:</th><td>" . $genre . "</td></tr>";
         echo "</table>";
 
     }

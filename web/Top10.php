@@ -13,14 +13,14 @@
     <meta charset="UTF-8">
     <title>Movie Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- import the base style sheet -->
-    <link rel="stylesheet" href="base.css">
     <!-- import the nav bar style sheet -->
     <link rel="stylesheet" href="menu_nav.css">
+    <!-- import compiled and minified CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- import the base style sheet -->
+    <link rel="stylesheet" href="base.css">
 
     <style type="text/css">    
-
         .navMenuTop10 {
             background-color: darkgrey;
         }
@@ -35,50 +35,25 @@
             height: 220px;
         }
 
-        .chartMedium {
-            width: 400px; 
-            height: 280px;
-        }
-
-        .chartLarge {
-            width: 600px; 
-            height: 420px;
-        }
-
         @media (max-width: 399px) {
             .chartSmall {
-                display: flow; 
-            }
-            .chartMedium {
-                display: none; 
-            }
-            .chartLarge {
-                display: none; 
+                width: 325px;
+                height: 220px 
             }
 
         }
 
         @media (min-width: 400px)  and (max-width: 599px) {
             .chartSmall {
-                display: none; 
-            }
-            .chartMedium {
-                display: flow; 
-            }
-            .chartLarge {
-                display: none; 
+                width: 400px;
+                height: 280px 
             }
         }
 
         @media (min-width: 600px) {
             .chartSmall {
-                display: none; 
-            }
-            .chartMedium {
-                display: none; 
-            }
-            .chartLarge {
-                display: flow; 
+                width: 600px;
+                height: 420px 
             }
         }
 
@@ -131,14 +106,6 @@
                     var chartSmlSearch = new 
                         google.visualization.BarChart(document.getElementById("chart_sml_search"));
                     chartSmlSearch.draw(dataSearch, optionsSearch);
-                    // create and draw the medium chart
-                    var chartMedSearch = new 
-                        google.visualization.BarChart(document.getElementById("chart_med_search"));
-                    chartMedSearch.draw(dataSearch, optionsSearch);
-                    // create and draw the large chart
-                    var chartMedSearch = new 
-                        google.visualization.BarChart(document.getElementById("chart_lge_search"));
-                    chartMedSearch.draw(dataSearch, optionsSearch);
                 }
             );
 
@@ -172,14 +139,6 @@
                     var chartSmlRating = new
                         google.visualization.BarChart(document.getElementById("chart_sml_rating"));
                     chartSmlRating.draw(dataRating, optionsRating);
-                    // create and draw the medium chart
-                    var chartMedRating = new 
-                        google.visualization.BarChart(document.getElementById("chart_med_rating"));
-                    chartMedRating.draw(dataRating, optionsRating);
-                    // create and draw the large chart
-                    var chartMedRating = new 
-                        google.visualization.BarChart(document.getElementById("chart_lge_rating"));
-                    chartMedRating.draw(dataRating, optionsRating);
                 }
             );
         }
@@ -211,13 +170,15 @@
 
     <section class="top10chart">
             <h1>Top 10 Movie Searches</h1>
-            <div id="chart_sml_search" class="chartSmall"></div>
-            <div id="chart_med_search" class="chartMedium"></div>
-            <div id="chart_lge_search" class="chartLarge"></div>
+            <div id="chart_sml_search" class="chartSmall" 
+                aria-label="chart of top 10 movies ranked by search hits"> 
+                <img alt="top 10 movies ranked by search hits"/>
+            </div>
             <h1>Top 10 Rated Movies</h1>
-            <div id="chart_sml_rating" class="chartSmall"></div>
-            <div id="chart_med_rating" class="chartMedium"></div>
-            <div id="chart_lge_rating" class="chartLarge"></div>
+            <div id="chart_sml_rating" class="chartSmall" 
+                aria-label="chart of top 10 movies ranked by user ratings">
+                <img alt="top 10 movies ranked by user ratings"/>
+            </div>
             <div id="sse_message"></div>
     </section>
 

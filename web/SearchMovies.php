@@ -11,15 +11,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Movie Manager</title>
+    <title>Search Movie Database</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- import the base style sheet -->
-    <link rel="stylesheet" href="base.css">
     <!-- import the nav bar style sheet -->
     <link rel="stylesheet" href="menu_nav.css">
     <!-- import the ratings form style sheet -->
     <link rel="stylesheet" href="ratings_formatting.css">
+    <!-- import compiled and minified CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <!-- import the base style sheet -->
+    <link rel="stylesheet" href="base.css">
 
     <style type="text/css">    
         .navMenuSearch {
@@ -70,9 +72,9 @@
             document.getElementById("rateTitle").value = movieTitle;
 
             // this version to open the pop up form
-            document.getElementById("ratingForm").style.display = "block";
+            // document.getElementById("ratingForm").style.display = "block";
             // this version to open the movie details page
-            // window.open("MovieDetails.php?selectedTitle=" + movieTitle);
+            window.open("MovieDetails.php?selectedTitle=" + movieTitle);
 
         }
 
@@ -102,7 +104,8 @@
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title" size="25"
                     value="<?php if (isset($_POST["title"])) echo $_POST["title"];?>" 
-                    title="enter part of a title to search for">
+                    title="enter part of a title to search for"
+                    autofocus>
                 </div>
                 <div>
                 <label for="yearFrom">Year From: </label>
