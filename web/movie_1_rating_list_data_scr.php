@@ -33,21 +33,21 @@ if(isset($_GET['selectedTitle']))
         $number_list = $sql->fetchAll();
 
         // get the number of votes
-        $r1sc = $number_list[0]['1starCount'];
-        $r2sc = $number_list[0]['2starCount'];
-        $r3sc = $number_list[0]['3starCount'];
-        $r4sc = $number_list[0]['4starCount'];
-        $r5sc = $number_list[0]['5starCount'];
+        $r1sc = number_format($number_list[0]['1starCount']);
+        $r2sc = number_format($number_list[0]['2starCount']);
+        $r3sc = number_format($number_list[0]['3starCount']);
+        $r4sc = number_format($number_list[0]['4starCount']);
+        $r5sc = number_format($number_list[0]['5starCount']);
         $rating = round( $number_list[0]['movieRating'], 1);
 
-        echo "[";
-        echo '["label", "Rating", { role: "annotation" }],';
-        echo '["1 star",' . $r1sc . ',"' . $r1sc . ' votes"],';
-        echo '["2 star",' . $r2sc . ',"' . $r2sc . ' votes"],';
-        echo '["3 star",' . $r3sc . ',"' . $r3sc . ' votes"],';
-        echo '["4 star",' . $r4sc . ',"' . $r4sc . ' votes"],';
-        echo '["5 star",' . $r5sc . ',"' . $r5sc . ' votes"]';
-        echo "]";
+        echo "<ul>";
+        echo "<li>average user rating " . $rating . "</li>";
+        echo "<li>" . $r1sc . " users assigned a 1 star rating</li>";
+        echo "<li>" . $r2sc . " users assigned a 2 star rating</li>";
+        echo "<li>" . $r3sc . " users assigned a 3 star rating</li>";
+        echo "<li>" . $r4sc . " users assigned a 4 star rating</li>";
+        echo "<li>" . $r5sc . " users assigned a 5 star rating</li>";
+        echo "</ul>";
 
     }
     catch(PDOException $e)

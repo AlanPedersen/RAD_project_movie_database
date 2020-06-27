@@ -48,6 +48,25 @@
         th {
             text-align: right;
         }
+
+        .listRatings {
+            width: 325px;
+            position: relative;
+            border: 3px solid #f1f1f1;
+            padding: 5px;
+            background-color: white;
+            display: none;
+        }
+
+        .ratingListLable {
+            cursor: pointer;
+        }
+        
+        .ratingListLable:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
     </style>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -77,16 +96,21 @@
           chartSmlRating.draw(dataRating, optionsRating);
         }
     </script>
+
     <script>
-        if(typeof(EventSource) !== "undefined") {
-            var source = new EventSource("updateChart.php");
-            source.onmessage = function(event) {
-                // drawChart();
-                // document.getElementById("sse_message").innerHTML += event.data + "<br>";
-            };
-        } else {
-            document.getElementById("sse_message").innerHTML 
-            = "Sorry, your browser does not support server-sent events...";
+        function showRatingList() {
+            var status = document.getElementById("list_ratings").style.display;
+
+            if( status != "block") {
+                document.getElementById("list_ratings").style.display = "block";
+                document.getElementById("rating_list_label").innerText = 
+                    "Accessible Text Only List (click to hide)";
+            }
+            else {
+                document.getElementById("list_ratings").style.display = "none";
+                document.getElementById("rating_list_label").innerText = 
+                    "Accessible Text Only List (click to display)";
+            }
         }
     </script>
 
@@ -112,6 +136,18 @@
                 aria-label="chart of user ratings">
                 <img alt="chart of user ratings"/>
             </div>
+    </section>
+
+    <section>
+        <h3 id="rating_list_label" class="ratingListLable" 
+            onclick = "showRatingList()">
+            Accessible Text Only List (click to display)</h3>
+
+        <div id="list_ratings" class="listRatings"
+            aria-label="list of user ratings">
+            <?php require 'movie_1_rating_list_data_scr.php'; ?>
+        </div>
+
     </section>
 
     <section>

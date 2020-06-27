@@ -26,7 +26,8 @@ try {
     echo "number~Rating~{role:'annotation'}";
     for ( $i = 0; $i < 10; $i++) {
         $rec = $i + 1;
-        echo '~No: ' . $rec . '~' . $number_list[$i]['movieRating'] .
+        echo '~No: ' . $rec . '~' . 
+            number_format( $number_list[$i]['movieRating'], 2) .
              '~' . $number_list[$i]['Title']; 
 
     }

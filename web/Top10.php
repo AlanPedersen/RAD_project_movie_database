@@ -35,12 +35,34 @@
             height: 220px;
         }
 
+        .listSearches,
+        .listRatings {
+            width: 325px;
+            position: relative;
+            border: 3px solid #f1f1f1;
+            padding: 5px;
+            background-color: white;
+            display: none;
+        }
+
+        .searchListLable {
+            cursor: pointer;
+        }
+        
+        .searchListLable:hover {
+            color: red;
+            text-decoration: underline;
+        }
+
         @media (max-width: 399px) {
             .chartSmall {
                 width: 325px;
                 height: 220px 
             }
-
+            .listSearches,
+            .listRatings {
+                width: 325px;
+            }
         }
 
         @media (min-width: 400px)  and (max-width: 599px) {
@@ -48,12 +70,20 @@
                 width: 400px;
                 height: 280px 
             }
+            .listSearches,
+            .listRatings {
+                width: 400px;
+            }
         }
 
         @media (min-width: 600px) {
             .chartSmall {
                 width: 600px;
                 height: 420px 
+            }
+            .listSearches,
+            .listRatings {
+                width: 600px;
             }
         }
 
@@ -74,8 +104,12 @@
             var now = new Date();
             var nowDisplay = now.toLocaleTimeString();
 
+            // initialse the data tables for the charts
             var dataRating = new google.visualization.DataTable(); 
             var dataSearch = new google.visualization.DataTable(); 
+            // initialise the lists for the data tables
+            var listDataSearch = "<ul>";
+            var listDataRating = "<ul>";
 
             $.get("movie_top_10_google_csv_scr.php",  
                 function( data) {
@@ -89,10 +123,20 @@
 
                     for( i = 1; i < 11; i++)
                     {
+                        // set the values for this record in the data table
                         dataSearch.setCell( i-1, 0, dataList[i*3]);
                         dataSearch.setCell( i-1, 1, dataList[i*3+1]);
                         dataSearch.setCell( i-1, 2, dataList[i*3+2]);
+
+                        // set the list entry for this record
+                        listDataSearch = listDataSearch.concat("<li>", 
+                            dataList[i*3], " " , dataList[i*3+2], " with ", 
+                            dataList[i*3+1], " search hits</li>");
+
                     }
+
+                    // finish the search list
+                    listDataSearch = listDataSearch.concat("</ul>");
 
                     var optionsSearch = {
                     title: "top 10 movie searches as at: " + nowDisplay,
@@ -106,6 +150,9 @@
                     var chartSmlSearch = new 
                         google.visualization.BarChart(document.getElementById("chart_sml_search"));
                     chartSmlSearch.draw(dataSearch, optionsSearch);
+                    // set the list in the page
+                    document.getElementById("list_searches").innerHTML = listDataSearch;
+
                 }
             );
 
@@ -124,7 +171,17 @@
                         dataRating.setCell( i-1, 0, dataList[i*3]);
                         dataRating.setCell( i-1, 1, dataList[i*3+1]);
                         dataRating.setCell( i-1, 2, dataList[i*3+2]);
+
+                        // set the list entry for this record
+                        listDataRating = listDataRating.concat("<li>", 
+                            dataList[i*3], " " , dataList[i*3+2], 
+                            " with an average rating of ", 
+                            dataList[i*3+1], "</li>");
+
                     }
+
+                    // finish the search list
+                    listDataRating = listDataRating.concat("</ul>");
             
                     var optionsRating = {
                         title: "top 10 rated movies as at: " + nowDisplay,
@@ -139,6 +196,9 @@
                     var chartSmlRating = new
                         google.visualization.BarChart(document.getElementById("chart_sml_rating"));
                     chartSmlRating.draw(dataRating, optionsRating);
+                    // set the list in the page
+                    document.getElementById("list_ratings").innerHTML = listDataRating;
+
                 }
             );
         }
@@ -157,6 +217,38 @@
         }
     </script>
 
+    <script>
+        function showSearchList() {
+            var status = document.getElementById("list_searches").style.display;
+
+            if( status != "block") {
+                document.getElementById("list_searches").style.display = "block";
+                document.getElementById("search_list_label").innerText = 
+                    "Accessible Text Only List (click to hide)";
+            }
+            else {
+                document.getElementById("list_searches").style.display = "none";
+                document.getElementById("rating_list_label").innerText = 
+                    "Accessible Text Only List (click to display)";
+            }
+        }
+
+        function showRatingList() {
+            var status = document.getElementById("list_ratings").style.display;
+
+            if( status != "block") {
+                document.getElementById("list_ratings").style.display = "block";
+                document.getElementById("rating_list_label").innerText = 
+                    "Accessible Text Only List (click to hide)";
+            }
+            else {
+                document.getElementById("list_ratings").style.display = "none";
+                document.getElementById("rating_list_label").innerText = 
+                    "Accessible Text Only List (click to display)";
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -171,14 +263,36 @@
     <section class="top10chart">
             <h1>Top 10 Movie Searches</h1>
             <div id="chart_sml_search" class="chartSmall" 
-                aria-label="chart of top 10 movies ranked by search hits"> 
-                <img alt="top 10 movies ranked by search hits"/>
+                aria-label="chart of top 10 movies ranked by search hits. full details in following section"> 
+                <img alt="top 10 movies ranked by search hits. full details in following section"/>
             </div>
+
+            <div>
+                <h3 id="search_list_label" class="searchListLable" 
+                    onclick = "showSearchList()">
+                Accessible Text Only List (click to display)</h3>
+            </div>
+            
+            <div id="list_searches" class="listSearches"
+                aria-label="list of top 10 movies ranked by search hits">
+            </div>
+            
             <h1>Top 10 Rated Movies</h1>
             <div id="chart_sml_rating" class="chartSmall" 
                 aria-label="chart of top 10 movies ranked by user ratings">
                 <img alt="top 10 movies ranked by user ratings"/>
             </div>
+
+            <div>
+                <h3 id="rating_list_label" class="searchListLable" 
+                    onclick = "showRatingList()">
+                Accessible Text Only List (click to display)</h3>
+            </div>
+            
+            <div id="list_ratings" class="listRatings"
+                aria-label="list of top 10 movies ranked by user ratings">
+            </div>
+
             <div id="sse_message"></div>
     </section>
 
