@@ -139,9 +139,10 @@
     </section>
 
     <section>
-        <h3 id="rating_list_label" class="ratingListLable" 
+        <button type="button" 
+            id="rating_list_label" class="ratingListLable" 
             onclick = "showRatingList()">
-            Accessible Text Only List (click to display)</h3>
+            Accessible Text Only List (click to display)</button>
 
         <div id="list_ratings" class="listRatings"
             aria-label="list of user ratings">

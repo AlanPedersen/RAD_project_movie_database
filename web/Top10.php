@@ -228,7 +228,7 @@
             }
             else {
                 document.getElementById("list_searches").style.display = "none";
-                document.getElementById("rating_list_label").innerText = 
+                document.getElementById("search_list_label").innerText = 
                     "Accessible Text Only List (click to display)";
             }
         }
@@ -268,9 +268,11 @@
             </div>
 
             <div>
-                <h3 id="search_list_label" class="searchListLable" 
+                <br>
+                <button type="button" 
+                    id="search_list_label" class="searchListLable" 
                     onclick = "showSearchList()">
-                Accessible Text Only List (click to display)</h3>
+                Accessible Text Only List (click to display)</button>
             </div>
             
             <div id="list_searches" class="listSearches"
@@ -284,9 +286,11 @@
             </div>
 
             <div>
-                <h3 id="rating_list_label" class="searchListLable" 
+                <br>
+                <button type="button"
+                    id="rating_list_label" class="searchListLable" 
                     onclick = "showRatingList()">
-                Accessible Text Only List (click to display)</h3>
+                Accessible Text Only List (click to display)</button>
             </div>
             
             <div id="list_ratings" class="listRatings"
